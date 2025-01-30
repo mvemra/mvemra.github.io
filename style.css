@@ -1,171 +1,283 @@
-/* General Styles */
+@use "sass:list";
+
+$ease-in-cubic: cubic-bezier(0.32,0,0.67,0);
+$ease-out-cubic: cubic-bezier(0.33,1,0.68,1);
+$ease-in-out-cubic: cubic-bezier(0.65,0,0.35,1);
+
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 3;
+	--primary1: hsl(var(--hue),90%,95%);
+	--primary2: hsl(var(--hue),90%,60%);
+	--primary3: hsl(var(--hue),90%,40%);
+	--primary4: hsl(var(--hue),90%,5%);
+	--trans-dur: 0.3s;
+	font-size: clamp(1rem,0.95rem + 0.25vw,1.25rem);
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
+	background-color: var(--primary1);
+	color: var(--primary4);
+	display: flex;
+	font: 1em/1.5 sans-serif;
+	height: 100vh;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+.heart {
+	color: var(--primary3);
+	display: block;
+	margin: auto;
+	width: 12em;
+	height: auto;
+	transition: color var(--trans-dur);
+
+	&__border,
+	&__vein,
+	&__vein-group {
+		animation: {
+			duration: 1s;
+			timing-function: $ease-in-out-cubic;
+			iteration-count: infinite;
+		};
+	}
+	&__border {
+		transform-origin: 16px 16px;
+
+		&--fade {
+			animation-name: heart-border-fade;
+		}
+		&--offset-pulse {
+			animation-name:
+				heart-border-offset,
+				heart-border-pulse;
+		}
+		&--pulse {
+			animation-name: heart-border-pulse;
+		}
+	}
+	&__vein {
+		&-group {
+			animation-name: heart-vein-group-pulse;
+			transform-origin: 9.5px 23.5px;
+		}
+
+		$vein-origins: (9.5px 12.5px) (9.5px 12.5px) (10.2px 14px) (12px 19.3px);
+		@for $v from 1 through 4 {
+			&--all#{$v},
+			&--pulse#{$v} {
+				transform-origin: list.nth($vein-origins,$v);
+			}
+			&--all#{$v} {
+				animation-name:
+					heart-vein-fade#{$v},
+					heart-vein-offset#{$v},
+					heart-vein-pulse#{$v};
+			}
+			&--pulse#{$v} {
+				animation-name: heart-vein-pulse#{$v};
+			}
+		}
+	}
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--primary4);
+		color: var(--primary1);
+	}
+	.heart {
+		color: var(--primary2);
+	}
 }
 
-h1, h2, h3 {
-    margin: 0;
-    padding: 0;
+/* Animations */
+@keyframes heart-border-fade {
+	from,
+	98%,
+	to {
+		opacity: 0;
+	}
+	5%,
+	93% {
+		opacity: 1;
+	}
 }
-
-a {
-    text-decoration: none;
-    color: #333;
+@keyframes heart-border-offset {
+	from {
+		stroke-dashoffset: 39;
+	}
+	50% {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: -39;
+	}
 }
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #007BFF;
-    color: #fff;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+@keyframes heart-border-pulse {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: scale(1);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: scale(1.125);
+	}
 }
-
-.btn:hover {
-    background: #0056b3;
+@keyframes heart-vein-group-pulse {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: translate(0,0) rotate(0);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: translate(-2px,-0.5px) rotate(5deg);
+	}
 }
-
-/* Header Styles */
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
+@keyframes heart-vein-fade1 {
+	from,
+	89%,
+	to {
+		opacity: 0;
+	}
+	5%,
+	84% {
+		opacity: 1;
+	}
 }
-
-header h1 {
-    float: left;
+@keyframes heart-vein-offset1 {
+	from {
+		stroke-dashoffset: 14.1;
+	}
+	25%,
+	50% {
+		stroke-dashoffset: 0;
+	}
+	90%,
+	to {
+		stroke-dashoffset: -14.1;
+	}
 }
-
-header nav {
-    float: right;
+@keyframes heart-vein-pulse1 {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: rotate(0);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: rotate(-9deg);
+	}
 }
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+@keyframes heart-vein-fade2 {
+	from,
+	85% {
+		opacity: 1;
+	}
+	90%,
+	to {
+		opacity: 0;
+	}
 }
-
-header nav ul li {
-    display: inline;
-    margin-left: 20px;
+@keyframes heart-vein-offset2 {
+	from,
+	11% {
+		stroke-dashoffset: 4.6;
+	}
+	36%,
+	55% {
+		stroke-dashoffset: 0;
+	}
+	95%,
+	to {
+		stroke-dashoffset: -4.6;
+	}
 }
-
-header nav ul li a {
-    color: #fff;
-    font-weight: bold;
+@keyframes heart-vein-pulse2 {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: rotate(0);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: rotate(9deg);
+	}
 }
-
-/* Hero Section */
-.hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
-    padding: 100px 0;
-    text-align: center;
+@keyframes heart-vein-fade3 {
+	from,
+	91% {
+		opacity: 1;
+	}
+	96%,
+	to {
+		opacity: 0;
+	}
 }
-
-.hero h2 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+@keyframes heart-vein-offset3 {
+	from,
+	12% {
+		stroke-dashoffset: 9.1;
+	}
+	37%,
+	59.5% {
+		stroke-dashoffset: 0;
+	}
+	99.5%,
+	to {
+		stroke-dashoffset: -9.1;
+	}
 }
-
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+@keyframes heart-vein-pulse3 {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: rotate(0);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: rotate(1deg);
+	}
 }
-
-/* About Section */
-.about {
-    padding: 50px 0;
-    text-align: center;
+@keyframes heart-vein-fade4 {
+	from,
+	92% {
+		opacity: 1;
+	}
+	97%,
+	to {
+		opacity: 0;
+	}
 }
-
-.about h2 {
-    margin-bottom: 20px;
+@keyframes heart-vein-offset4 {
+	from,
+	25.75% {
+		stroke-dashoffset: 4.1;
+	}
+	50%,
+	71% {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: -4.1;
+	}
 }
-
-/* Portfolio Section */
-.portfolio {
-    padding: 50px 0;
-    text-align: center;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.portfolio-item {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.portfolio-item img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-/* Contact Section */
-.contact {
-    padding: 50px 0;
-    text-align: center;
-}
-
-.contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contact input, .contact textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.contact button {
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact button:hover {
-    background: #0056b3;
-}
-
-/* Footer Styles */
-footer {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer .social-links {
-    margin-top: 10px;
-}
-
-footer .social-links a {
-    color: #fff;
-    margin: 0 10px;
-    font-size: 1.2em;
+@keyframes heart-vein-pulse4 {
+	from,
+	to {
+		animation-timing-function: $ease-in-cubic;
+		transform: rotate(0);
+	}
+	50% {
+		animation-timing-function: $ease-out-cubic;
+		transform: rotate(-18deg);
+	}
 }
