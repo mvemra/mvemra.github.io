@@ -3,76 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Showcase Website</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
-   <svg class="heart" viewBox="0 0 32 32" width="32px" height="32px" role="img" aria-label="Heart beating with red lines running down the outside and veins inside">
-	<symbol id="heart-border">
-		<path d="M 15.9 7.75 C 15.9 7.75 11.639 2.996 6.785 5.85 C 4.652 7.105 2.992 9.667 3 12.5 C 3.017 18.716 7.878 22.041 9.5 23.547 C 14.398 27.547 16.088 27.5 16 27.5" stroke-dasharray="39 39" />
-	</symbol>
-	<symbol id="heart-vein1">
-		<path d="M 11.095 7.744 C 11.095 7.744 9.119 10.295 9.5 12.5 C 9.835 14.441 11.089 14.417 12.929 15.896 C 14.638 17.269 14.431 19.507 14.431 19.507" stroke-dasharray="14.1 39" />
-	</symbol>
-	<symbol id="heart-vein2">
-		<path d="M 9.5 12.5 C 9.5 12.5 9.667 13.781 9.209 14.895 C 8.796 15.901 7.872 16.561 7.872 16.561" stroke-dasharray="4.6 39" />
-	</symbol>
-	<symbol id="heart-vein3">
-		<path d="M 10.2 14 C 12.133 16.433 12.095 18.427 12 19.4 C 11.829 21.153 10.4 22.2 10.4 22.2" stroke-dasharray="9.1 39" />
-	</symbol>
-	<symbol id="heart-vein4">
-		<path d="M 12 19.3 C 12 19.3 12 20.572 12.551 21.726 C 13.012 22.692 13.535 22.974 13.535 22.974" stroke-dasharray="4.1 39" />
-	</symbol>
-	<g fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
-		<g opacity="0.25">
-			<g>
-				<use class="heart__border heart__border--pulse" href="#heart-border" />
-				<g class="heart__vein-group">
-					<use class="heart__vein heart__vein--pulse1" href="#heart-vein1" />
-					<use class="heart__vein heart__vein--pulse2" href="#heart-vein2" />
-					<use class="heart__vein heart__vein--pulse3" href="#heart-vein3" />
-					<use class="heart__vein heart__vein--pulse4" href="#heart-vein4" />
-				</g>
-			</g>
-			<g transform="scale(-1,1)" style="transform-origin:16px 16px">
-				<use class="heart__border heart__border--pulse" href="#heart-border" />
-				<g class="heart__vein-group">
-					<use class="heart__vein heart__vein--pulse1" href="#heart-vein1" />
-					<use class="heart__vein heart__vein--pulse2" href="#heart-vein2" />
-					<use class="heart__vein heart__vein--pulse3" href="#heart-vein3" />
-					<use class="heart__vein heart__vein--pulse4" href="#heart-vein4" />
-				</g>
-			</g>
-		</g>
-		<g>
-			<g class="heart__border heart__border--fade">
-				<g>
-					<use class="heart__border heart__border--offset-pulse" href="#heart-border" />
-				</g>
-				<g transform="scale(-1,1)" style="transform-origin:16px 16px">
-					<use class="heart__border heart__border--offset-pulse" href="#heart-border" />
-				</g>
-			</g>
-			<g>
-				<g class="heart__vein-group">
-					<use class="heart__vein heart__vein--all1" href="#heart-vein1" />
-					<use class="heart__vein heart__vein--all2" href="#heart-vein2" />
-					<use class="heart__vein heart__vein--all3" href="#heart-vein3" />
-					<use class="heart__vein heart__vein--all4" href="#heart-vein4" />
-				</g>
-			</g>
-			<g transform="scale(-1,1)" style="transform-origin:16px 16px">
-				<g class="heart__vein-group">
-					<use class="heart__vein heart__vein--all1" href="#heart-vein1" />
-					<use class="heart__vein heart__vein--all2" href="#heart-vein2" />
-					<use class="heart__vein heart__vein--all3" href="#heart-vein3" />
-					<use class="heart__vein heart__vein--all4" href="#heart-vein4" />
-				</g>
-			</g>
-		</g>
-	</g>
-</svg>
+    <section>
+        <nav>
+            <a href="#" class="logo">ULTRA CODE</a>
+            
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Team</a></li>
+            </ul>
+        </nav>
+
+        <div class="text-container">
+            <p>Hello,</p>
+            <p>I'M LOUIS DOE</p>
+            <p>I am a Software Engineer & Designer</p>
+            <button class="hire-btn">Hire me</button>
+            <button class="down-cv">Download CV</button>
+        </div>
+
+        <img src="https://i.postimg.cc/j2hRb62x/model.png" alt="model img" class="model">
+    </section>
+
+    <div class="about-container">
+        <img src="https://i.postimg.cc/vZFtjW9g/about-img.png" alt="image">
+
+        <div class="about-text">
+            <p>About me</p>
+            <p>Developer & Designer</p>
+            <p>Hello, my name is Louis Doe. I'm a developer and also a designer. If you have any project or if you want to make a software for your business, you can contact me! I make it as soon as possible. You'll really like my work, if you don't, I'll make changes until you like the results</p>
+            <p>I also can design logos, icons, ilustrations, and other visual assets. For Android and Apple, I can create visually appealing apps interfaces, layouts, menus, buttons and icons that ensures a user-friendly experience</p>
+
+            <button class="hire-btn">Hire me</button>
+            <button class="down-cv">Download CV</button>
+        </div>
+    </div>
+
+    <div class="services">
+        <div class="services-text">
+            <p>Services</p>
+            <p>Have any project in mind?</p>
+            <p>I'd love to hear about it! Whether it's a small idea or a grand vision, I'm ready to bring it to life. Reach out today and let's make your project a reality!</p>
+        </div>
+
+        <div class="box-container">
+            <div class="box1">
+                <span>1</span>
+                <p class="heading">Web Design</p>
+                <p class="details">By understanding your needs and goals, I translate those into wireframes and mockups by blending artistic vision with technical skills to craft user-friendly and visually appealing online experiences</p>
+
+                <button>Read More</button>
+            </div>
+            
+            <div class="box2">
+                <span>2</span>
+                <p class="heading">Web Development</p>
+                <p class="details">By combining creativity and technical skills, I can create and maintain websites by using front-end and back-end development, responsive design for most screens and web performance optimization</p>
+
+                <button>Read More</button>
+            </div>
+
+            <div class="box3">
+                <span>3</span>
+                <p class="heading">Security/<abbr title="Search Engine Optimization">SEO</abbr></p>
+                <p class="details">I create secure websites with relevant content that meets the needs of your customers. Also I seek mobile optimization, faster loading pages and keywords that helps search engines and rankings</p>
+
+                <button>Read More</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-me">
+        <p>If you have any project in your mind</p>
+        <button>Contact me</button>
+    </div>
+
+    <footer>
+        <p>ULTRA CODE</p>
+        <p>Hello, my name is Louis Doe. I'm a developer and also a designer. If you have any project or if you want to make a software for your business, you can contact me!</p>
+
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <p>Copyright ULTRA CODE</p>
+    </footer>
+
+    <div class="a-social-b">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
 </body>
 </html>
