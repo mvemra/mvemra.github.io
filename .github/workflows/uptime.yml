@@ -14,7 +14,7 @@ jobs:
 
       - name: Check Website Status
         run: |
-          URLs=("https://example.com" "https://another-site.com")
+          URLs=("https://geotimecard.com" "https://swapmyschedule.com" "https://ajscloud.com" "https://suzy.one")
           JSON="["
           for URL in "${URLs[@]}"; do
             STATUS=$(curl -Is $URL | head -n 1 | grep "200 OK" > /dev/null && echo "UP" || echo "DOWN")
