@@ -84,6 +84,31 @@
         <button>Contact me</button>
     </div>
 
+     <h1>Uptime Monitor</h1>
+    <table>
+        <tr>
+            <th>Website</th>
+            <th>Status</th>
+        </tr>
+        <tbody id="status-table"></tbody>
+    </table>
+    <script>
+        async function fetchStatus() {
+            const response = await fetch('status.json');
+            const data = await response.json();
+            const table = document.getElementById("status-table");
+            table.innerHTML = "";
+            data.forEach(site => {
+                table.innerHTML += `<tr>
+                    <td>${site.url}</td>
+                    <td class="${site.status === 'UP' ? 'up' : 'down'}">${site.status}</td>
+                </tr>`;
+            });
+        }
+        fetchStatus();
+        setInterval(fetchStatus, 60000); // Refresh every 60 sec
+    </script>
+
     <footer>
         <p>ULTRA CODE</p>
         <p>Hello, my name is Louis Doe. I'm a developer and also a designer. If you have any project or if you want to make a software for your business, you can contact me!</p>
